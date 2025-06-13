@@ -4,6 +4,8 @@
 const axios = require("axios");
 const { Buffer } = require("buffer");
 const config = require("./config.json");
+const Token = require("./token");
+const { extractAndValidateInputVars } = require("./inputVars");
 
 function decodeBase64JsonArg(arg) {
   try {
@@ -23,7 +25,15 @@ async function main() {
     process.exit(1);
   }
   const input = decodeBase64JsonArg(arg);
-  const env = input.env || "staging";
+  let vars;
+  try {
+    vars = extractAndValidateInputVars(input);
+  } catch (e) {
+    console.error(e.message);
+    process.exit(1);
+  }
+  const env = vars.env;
+  const clientKey = vars.clientKey;
 
   const bigUrl = config.bigUrl.replace("${env}", env);
   const createJwtUrl = `${bigUrl}/internal/create_test_samsung_jwt`;
@@ -31,7 +41,32 @@ async function main() {
   try {
     const response = await axios.get(createJwtUrl); // Use GET instead of POST
     console.log(`Response from create_test_samsung_jwt:`, response.data);
-    // TODO: Store or process the JWT as needed
+    // Store the JWT token using the Token singleton
+    const tokenManager = new Token();
+    tokenManager.set(response.data);
+    // Decode and print the JWT
+    const decoded = tokenManager.decode();
+    if (decoded) {
+      console.log('Decoded JWT Header:', decoded.header);
+      console.log('Decoded JWT Payload:', decoded.payload);
+    } else {
+      console.log('Invalid JWT format.');
+    }
+
+    // Call the GraphQL endpoint with the JWT and clientKey
+    try {
+      const gqlResponse = await tokenManager.fetchGraphQLToken(clientKey, env);
+      console.log('GraphQL response:', gqlResponse);
+      // Print tokens and decoded access token from the Token instance
+      if (tokenManager.accessToken) {
+        console.log('AccessToken:', tokenManager.accessToken);
+        if (tokenManager.decodedAccessTokenPayload) {
+          console.log('Decoded AccessToken Payload:', tokenManager.decodedAccessTokenPayload);
+        }
+      }
+    } catch (err) {
+      console.error('Error in GraphQL call:', err.message);
+    }
   } catch (error) {
     if (error.response) {
       console.error(`Error calling create_test_samsung_jwt:`, error.response.status, error.response.data);
