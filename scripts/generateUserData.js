@@ -6,6 +6,7 @@ const { Buffer } = require("buffer");
 const config = require("./config.json");
 const Token = require("./token");
 const { extractAndValidateInputVars } = require("./inputVars");
+const generateScriptData = require("./generateScriptData");
 
 function decodeBase64JsonArg(arg) {
   try {
@@ -38,43 +39,91 @@ async function main() {
   const bigUrl = config.bigUrl.replace("${env}", env);
   const createJwtUrl = `${bigUrl}/internal/create_test_samsung_jwt`;
   console.log(`Using createJwtUrl: ${createJwtUrl}`);
+  const tokenManager = new Token();
   try {
     const response = await axios.get(createJwtUrl); // Use GET instead of POST
-    console.log(`Response from create_test_samsung_jwt:`, response.data);
-    // Store the JWT token using the Token singleton
-    const tokenManager = new Token();
-    tokenManager.set(response.data);
-    // Decode and print the JWT
-    const decoded = tokenManager.decode();
-    if (decoded) {
-      console.log('Decoded JWT Header:', decoded.header);
-      console.log('Decoded JWT Payload:', decoded.payload);
-    } else {
-      console.log('Invalid JWT format.');
-    }
+    // console.log(`Response from create_test_samsung_jwt:`, response.data);
 
     // Call the GraphQL endpoint with the JWT and clientKey
     try {
+      tokenManager.set(response.data);
       const gqlResponse = await tokenManager.fetchGraphQLToken(clientKey, env);
-      console.log('GraphQL response:', gqlResponse);
+      console.log("GraphQL response:", gqlResponse);
       // Print tokens and decoded access token from the Token instance
       if (tokenManager.accessToken) {
-        console.log('AccessToken:', tokenManager.accessToken);
         if (tokenManager.decodedAccessTokenPayload) {
-          console.log('Decoded AccessToken Payload:', tokenManager.decodedAccessTokenPayload);
+          console.log(
+            "Decoded AccessToken Payload:",
+            tokenManager.decodedAccessTokenPayload
+          );
         }
       }
     } catch (err) {
-      console.error('Error in GraphQL call:', err.message);
+      console.error("Error in getToken call:", err.message);
+      process.exit(1);
     }
   } catch (error) {
     if (error.response) {
-      console.error(`Error calling create_test_samsung_jwt:`, error.response.status, error.response.data);
+      console.error(
+        `Error calling create_test_samsung_jwt:`,
+        error.response.status,
+        error.response.data
+      );
     } else {
       console.error(`Error calling create_test_samsung_jwt:`, error.message);
+      process.exit(1);
     }
   }
 
+  // Generate and store random user data
+  const randomUserData = generateScriptData();
+  console.log("Random User Data:", randomUserData);
+
+  // Prepare profile input for updateUserProfile
+  const profileInput = {
+    resourceType: "Person",
+    name: [
+      {
+        use: "usual",
+        family: randomUserData.random_LN,
+        given: [randomUserData.random_FN],
+      },
+    ],
+    telecom: [
+      {
+        system: "email",
+        value: randomUserData.random_email,
+        use: "home",
+      },
+      {
+        system: "phone",
+        value: randomUserData.random_phone,
+        use: "home",
+      },
+    ],
+    gender: randomUserData.genderType,
+    birthDate: randomUserData.randomBirthday,
+    address: [
+      {
+        use: "home",
+        line: [randomUserData.random_street],
+        city: randomUserData.random_city,
+        state: "OH",
+        country: "US",
+        postalCode: "45040",
+      },
+    ],
+  };
+
+  // Call updateUserProfile
+  const updateUserProfile = require("./updateUserProfile");
+  try {
+    const tokenManager = new Token();
+    const updateResult = await updateUserProfile({ env, tokenManager, profileInput });
+    console.log("UpdateUserProfile result:", updateResult);
+  } catch (err) {
+    console.error("Error in updateUserProfile call:", err.message);
+  }
 }
 
 main().catch((err) => {

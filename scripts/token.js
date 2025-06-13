@@ -3,6 +3,7 @@
 
 const { Buffer } = require("buffer");
 const GraphQLAdapter = require('./graphqlAdapter');
+const getTokenQuery = require('./queries/getToken');
 
 class Token {
   constructor() {
@@ -41,7 +42,7 @@ class Token {
       'Authorization': this.token,
       'Content-Type': 'application/json',
     };
-    const query = `query {\n  getToken {\n    accessToken {\n      jwtToken\n    }\n    idToken {\n      jwtToken\n    }\n    refreshToken{\n      token\n    }\n  }\n}`;
+    const query = getTokenQuery;
     const adapter = new GraphQLAdapter({ url, headers });
     try {
       const gqlResponse = await adapter.request(query, {});
