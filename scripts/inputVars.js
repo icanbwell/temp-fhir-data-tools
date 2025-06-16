@@ -2,8 +2,8 @@
 // Centralized extraction and validation of required variables from base64 input
 
 function extractAndValidateInputVars(input) {
-  const requiredVars = ["env", "clientKey"];
-  const missing = requiredVars.filter((key) => !input[key]);
+  const requiredVars = ["env", "clientKey", "proaAccessToken"];
+  const missing = requiredVars.filter((key) => !input[key] || input[key] === undefined);
   if (missing.length > 0) {
     throw new Error(`Missing required input variables: ${missing.join(", ")}`);
   }
@@ -11,6 +11,7 @@ function extractAndValidateInputVars(input) {
   return {
     env: input.env,
     clientKey: input.clientKey,
+    proaAccessToken: input.proaAccessToken,
     // Add more fields as needed
   };
 }
