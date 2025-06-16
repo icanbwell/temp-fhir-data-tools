@@ -200,6 +200,16 @@ async function main() {
     console.error("Error in createObservations call:", err.message);
     process.exit(1);
   }
+
+  // call encounters
+  const createEncounters = require("./createEncounters");
+  try {
+    const encountersResult = await createEncounters({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
+    console.log("CreateEncounters result:", encountersResult);
+  } catch (err) {
+    console.error("Error in createEncounters call:", err.message);
+    process.exit(1);
+  }
 }
 
 main().catch((err) => {

@@ -230,6 +230,82 @@ function generateScriptData() {
   const observationId38 = uuidv4();
   const observationId39 = uuidv4();
   const observationId40 = uuidv4();
+  const observationId41 = uuidv4();
+  const observationId42 = uuidv4();
+  const observationId43 = uuidv4();
+  const observationId44 = uuidv4();
+  const observationId45 = uuidv4();
+  const observationId46 = uuidv4();
+  const observationId47 = uuidv4();
+  const observationId48 = uuidv4();
+  const observationId49 = uuidv4();
+  const observationId50 = uuidv4();
+  const observationId51 = uuidv4();
+  const observationId52 = uuidv4();
+  const observationId53 = uuidv4();
+  const observationId54 = uuidv4();
+  const observationId55 = uuidv4();
+  const observationId56 = uuidv4();
+  const observationId57 = uuidv4();
+  const observationId58 = uuidv4();
+  const observationId59 = uuidv4();
+  const observationId60 = uuidv4();
+  const observationId61 = uuidv4();
+  const observationId62 = uuidv4();
+  const observationId63 = uuidv4();
+  const observationId64 = uuidv4();
+  const observationId65 = uuidv4();
+  const observationId66 = uuidv4();
+  const observationId67 = uuidv4();
+  const observationId68 = uuidv4();
+  const observationId69 = uuidv4();
+  const observationId70 = uuidv4();
+  const observationId71 = uuidv4(); 
+  const observationId72 = uuidv4();
+
+  const labObservationId1 = uuidv4();
+  const labObservationId2 = uuidv4();
+  const labObservationId3 = uuidv4();
+  const labObservationId4 = uuidv4();
+  const labObservationId5 = uuidv4();
+  const labObservationId6 = uuidv4();
+  const labObservationId7 = uuidv4();
+  const labObservationId8 = uuidv4();
+  const labObservationId9 = uuidv4();
+  const labObservationId10 = uuidv4();
+  const labObservationId11 = uuidv4();
+  const labObservationId12 = uuidv4();
+  const labObservationId13 = uuidv4();
+  const labObservationId14 = uuidv4();
+  const labObservationId15 = uuidv4();
+  const labObservationId16 = uuidv4();
+  const labObservationId17 = uuidv4();
+  const labObservationId18 = uuidv4();
+  const labObservationId19 = uuidv4();
+  const labObservationId20 = uuidv4();
+  const labObservationId21 = uuidv4();
+  const labObservationId22 = uuidv4();
+  const labObservationId23 = uuidv4();
+  const labObservationId24 = uuidv4();
+  const labObservationId25 = uuidv4();
+
+
+  const labSpecimenId1 = uuidv4();
+  const labSpecimenId2 = uuidv4();
+  const labSpecimenId3 = uuidv4();
+  const labSpecimenId4 = uuidv4();
+  const labSpecimenId5 = uuidv4();
+
+  const recnounter1 = uuidv4();
+  const recnounter2 = uuidv4();
+  const recnounter3 = uuidv4();
+  const recnounter4 = uuidv4();
+  const recnounter5 = uuidv4();
+  const recnounter6 = uuidv4();
+  const recnounter7 = uuidv4();
+  const recnounter8 = uuidv4();
+  const recnounter9 = uuidv4();
+  const recnounter10 = uuidv4();
 
 
   return {
@@ -368,6 +444,16 @@ function generateScriptData() {
     randomSpecialEncounter2,
     randomSpecialEncounter3,
     randomSpecialEncounter4,
+    recnounter1,
+    recnounter2,
+    recnounter3,
+    recnounter4,
+    recnounter5,
+    recnounter6,
+    recnounter7,
+    recnounter8,
+    recnounter9,
+    recnounter10,
     // Care Plan
     randomCarePlan1,
     randomCarePlan2,
@@ -435,7 +521,72 @@ function generateScriptData() {
     observationId37,
     observationId38,
     observationId39,
-    observationId40
+    observationId40,
+    observationId41,
+    observationId42,
+    observationId43,
+    observationId44,
+    observationId45,
+    observationId46,
+    observationId47,
+    observationId48,
+    observationId49,
+    observationId50,
+    observationId51,
+    observationId52,
+    observationId53,
+    observationId54,
+    observationId55,
+    observationId56,
+    observationId57,
+    observationId58,
+    observationId59,
+    observationId60,
+    observationId61,
+    observationId62,
+    observationId63,
+    observationId64,
+    observationId65,
+    observationId66,
+    observationId67,
+    observationId68,
+    observationId69,
+    observationId70,
+    observationId71,
+    observationId72,
+
+    // Lab Observations
+    labObservationId1,
+    labObservationId2,
+    labObservationId3,
+    labObservationId4,
+    labObservationId5,
+    labObservationId6,
+    labObservationId7,
+    labObservationId8,
+    labObservationId9,
+    labObservationId10,
+    labObservationId11,
+    labObservationId12,
+    labObservationId13,
+    labObservationId14,
+    labObservationId15,
+    labObservationId16,
+    labObservationId17,
+    labObservationId18,
+    labObservationId19,
+    labObservationId20,
+    labObservationId21,
+    labObservationId22,
+    labObservationId23,
+    labObservationId24,
+    // Lab Specimens
+    labSpecimenId1,
+    labSpecimenId2,
+    labSpecimenId3,
+    labSpecimenId4,
+    labSpecimenId5
+
 
   };
 }
