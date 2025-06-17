@@ -210,6 +210,61 @@ async function main() {
     console.error("Error in createEncounters call:", err.message);
     process.exit(1);
   }
+
+  // call conditions
+  const createConditions = require("./createConditions");
+  try {
+    const conditionsResult = await createConditions({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
+    console.log("CreateConditions result:", conditionsResult);
+  } catch (err) {
+    console.error("Error in createConditions call:", err.message);
+    process.exit(1);
+  }
+
+  // call medications
+  const createMedications = require("./createMedications");
+  try {
+    const medicationsResult = await createMedications({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
+    console.log("CreateMedications result:", medicationsResult);
+  }
+  catch (err) {
+    console.error("Error in createMedications call:", err.message);
+    process.exit(1);
+  }
+
+  // call documentReference
+  const createDocumentReference = require("./createdocumentreferenes");
+  try {
+    const documentReferenceResult = await createDocumentReference({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
+    console.log("CreateDocumentReference result:", documentReferenceResult);
+  }
+  catch (err) {
+    console.error("Error in createDocumentReference call:", err.message);
+    process.exit(1);
+  }
+
+  // call careplans
+  const createCarePlans = require("./createCareplans");
+  try {
+    const carePlansResult = await createCarePlans({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
+    console.log("CreateCarePlans result:", carePlansResult);
+  }
+  catch (err) {
+    console.error("Error in createCarePlans call:", err.message);
+    process.exit(1);
+  }
+
+  // call allergyIntolerances
+  const createAllergyIntolerances = require("./createAllergyIntollerances");
+  try {
+    const allergyIntolerancesResult = await createAllergyIntolerances({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
+    console.log("CreateAllergyIntolerances result:", allergyIntolerancesResult);
+  }
+  catch (err) {
+    console.error("Error in createAllergyIntolerances call:", err.message);
+    process.exit(1);
+  }
+
 }
 
 main().catch((err) => {

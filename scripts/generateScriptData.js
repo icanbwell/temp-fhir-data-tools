@@ -307,6 +307,17 @@ function generateScriptData() {
   const recnounter9 = uuidv4();
   const recnounter10 = uuidv4();
 
+  const documentRefenceID1 = uuidv4();
+  const documentRefenceID2 = uuidv4();
+  const documentRefenceID3 = uuidv4();
+  const documentRefenceID4 = uuidv4();
+  const documentRefenceID5 = uuidv4();
+
+  const binaryID1 = uuidv4();
+  const binaryID2 = uuidv4();
+
+  const binaryData1 = uuidv4();
+  const binaryData2 = uuidv4();
 
   return {
     random_FN: firstName,
@@ -585,8 +596,22 @@ function generateScriptData() {
     labSpecimenId2,
     labSpecimenId3,
     labSpecimenId4,
-    labSpecimenId5
+    labSpecimenId5,
 
+    // Document References
+    documentRefenceID1,
+    documentRefenceID2,
+    documentRefenceID3,
+    documentRefenceID4,
+    documentRefenceID5,
+
+    // Binary IDs
+    binaryID1,
+    binaryID2,
+
+    // Binary Data
+    binaryData1,
+    binaryData2,
 
   };
 }
