@@ -44,7 +44,7 @@ async function main() {
   const tokenManager = new Token();
   try {
     const response = await axios.get(createJwtUrl); // Use GET instead of POST
-    // console.log(`Response from create_test_samsung_jwt:`, response.data);
+    console.log(`NJ-DATA: Response from create_test_samsung_jwt:`, response.data);
 
     // Call the GraphQL endpoint with the JWT and clientKey
     try {
@@ -145,17 +145,21 @@ async function main() {
   try {
     const proaPersonResult = await createProaPerson({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
     proaClientFhirPersonId = proaPersonResult.id;
-    console.log("CreateProaPerson result:", proaPersonResult);
+    // console.log("CreateProaPerson result:", proaPersonResult);
   } catch (err) {
     console.error("Error in createProaPerson call:", err.message);
     process.exit(1);
   }
 
+  console.log("NJ-DATA: proaClientFhirPatientId:", proaClientFhirPatientId);
+  console.log("NJ-DATA: proaPatientFhirSourceUrl:", proaPatientFhirSourceUrl);
+  console.log("NJ-DATA: proaClientFhirPersonId:", proaClientFhirPersonId);
+
   // Call createProaOrganizations
   const createProaOrganizations = require("./createProaOrganizations");
   try {
     const proaOrganizationsResult = await createProaOrganizations({ env, proaAccessToken, randomUserData });
-    console.log("CreateProaOrganizations result:", proaOrganizationsResult);
+    // console.log("CreateProaOrganizations result:", proaOrganizationsResult);
   } catch (err) {
     console.error("Error in createProaOrganizations call:", err.message);
     process.exit(1);
@@ -165,7 +169,7 @@ async function main() {
   const createProaPractitioners = require("./createProaPractitioners");
   try {
     const proaPractitionersResult = await createProaPractitioners({ env, proaAccessToken, randomUserData });
-    console.log("CreateProaPractitioners result:", proaPractitionersResult);
+    // console.log("CreateProaPractitioners result:", proaPractitionersResult);
   } catch (err) {
     console.error("Error in createProaPractitioners call:", err.message);
     process.exit(1);
@@ -175,7 +179,7 @@ async function main() {
   const createProaProcedures = require("./createProaProcedures");
   try {
     const proaProceduresResult = await createProaProcedures({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    console.log("CreateProaProcedures result:", proaProceduresResult);
+    // console.log("CreateProaProcedures result:", proaProceduresResult);
   } catch (err) {
     console.error("Error in createProaProcedures call:", err.message);
     process.exit(1);
@@ -185,7 +189,7 @@ async function main() {
   const createProaImmunizations = require("./createProaImmunization");
   try {
     const proaImmunizationsResult = await createProaImmunizations({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    console.log("CreateProaImmunizations result:", proaImmunizationsResult);
+    // console.log("CreateProaImmunizations result:", proaImmunizationsResult);
   } catch (err) {
     console.error("Error in createProaImmunizations call:", err.message);
     process.exit(1);
@@ -195,7 +199,7 @@ async function main() {
   const createObservations = require("./createObservations");
   try {
     const observationsResult = await createObservations({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    console.log("CreateObservations result:", observationsResult);
+    // console.log("CreateObservations result:", observationsResult);
   } catch (err) {
     console.error("Error in createObservations call:", err.message);
     process.exit(1);
@@ -205,7 +209,7 @@ async function main() {
   const createEncounters = require("./createEncounters");
   try {
     const encountersResult = await createEncounters({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    console.log("CreateEncounters result:", encountersResult);
+    // console.log("CreateEncounters result:", encountersResult);
   } catch (err) {
     console.error("Error in createEncounters call:", err.message);
     process.exit(1);
@@ -215,7 +219,7 @@ async function main() {
   const createConditions = require("./createConditions");
   try {
     const conditionsResult = await createConditions({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    console.log("CreateConditions result:", conditionsResult);
+    // console.log("CreateConditions result:", conditionsResult);
   } catch (err) {
     console.error("Error in createConditions call:", err.message);
     process.exit(1);
@@ -225,7 +229,7 @@ async function main() {
   const createMedications = require("./createMedications");
   try {
     const medicationsResult = await createMedications({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    console.log("CreateMedications result:", medicationsResult);
+    // console.log("CreateMedications result:", medicationsResult);
   }
   catch (err) {
     console.error("Error in createMedications call:", err.message);
@@ -236,7 +240,7 @@ async function main() {
   const createDocumentReference = require("./createdocumentreferenes");
   try {
     const documentReferenceResult = await createDocumentReference({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    console.log("CreateDocumentReference result:", documentReferenceResult);
+    // console.log("CreateDocumentReference result:", documentReferenceResult);
   }
   catch (err) {
     console.error("Error in createDocumentReference call:", err.message);
@@ -247,7 +251,7 @@ async function main() {
   const createCarePlans = require("./createCareplans");
   try {
     const carePlansResult = await createCarePlans({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    console.log("CreateCarePlans result:", carePlansResult);
+    // console.log("CreateCarePlans result:", carePlansResult);
   }
   catch (err) {
     console.error("Error in createCarePlans call:", err.message);
@@ -258,11 +262,44 @@ async function main() {
   const createAllergyIntolerances = require("./createAllergyIntollerances");
   try {
     const allergyIntolerancesResult = await createAllergyIntolerances({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    console.log("CreateAllergyIntolerances result:", allergyIntolerancesResult);
+    // console.log("CreateAllergyIntolerances result:", allergyIntolerancesResult);
   }
   catch (err) {
     console.error("Error in createAllergyIntolerances call:", err.message);
     process.exit(1);
+  }
+
+  // Create Cognito user if userPoolId is provided
+  if (vars.userPoolId) {
+    const createCognitoUser = require("./createCognitoUser");
+    try {
+      console.log("Creating Cognito user...");
+      console.log("Using FHIR IDs:");
+      console.log(`- proaClientFhirPatientId: ${proaClientFhirPatientId}`);
+      console.log(`- proaClientFhirPersonId: ${proaClientFhirPersonId}`);
+      
+      const cognitoResult = await createCognitoUser({
+        userPoolId: vars.userPoolId,
+        awsRegion: vars.awsRegion,
+        randomUserData,
+        proaClientFhirPatientId,
+        proaClientFhirPersonId
+      });
+      console.log("Cognito user created successfully:");
+      console.log(`Username: ${cognitoResult.username}`);
+      console.log(`Email: ${cognitoResult.email}`);
+      console.log(`Password: ${cognitoResult.password}`);
+      console.log("Custom attributes set:");
+      console.log(`- custom:bwellFhirPatientId: ${proaClientFhirPatientId}`);
+      console.log(`- custom:clientFhirPatientId: ${proaClientFhirPatientId}`);
+      console.log(`- custom:bwellFhirPersonId: ${proaClientFhirPersonId}`);
+      console.log(`- custom:clientFhirPersonId: ${proaClientFhirPersonId}`);
+    } catch (err) {
+      console.error("Error creating Cognito user:", err.message);
+      // Don't exit on Cognito user creation failure - it's an optional step
+    }
+  } else {
+    console.log("Skipping Cognito user creation - userPoolId not provided in input");
   }
 
 }
