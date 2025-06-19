@@ -189,7 +189,7 @@ async function main() {
   const createProaImmunizations = require("./createProaImmunization");
   try {
     const proaImmunizationsResult = await createProaImmunizations({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    // console.log("CreateProaImmunizations result:", proaImmunizationsResult);
+    console.log("CreateProaImmunizations result:", JSON.stringify(proaImmunizationsResult));
   } catch (err) {
     console.error("Error in createProaImmunizations call:", err.message);
     process.exit(1);
@@ -199,7 +199,7 @@ async function main() {
   const createObservations = require("./createObservations");
   try {
     const observationsResult = await createObservations({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    // console.log("CreateObservations result:", observationsResult);
+    console.log("CreateObservations result:", observationsResult);
   } catch (err) {
     console.error("Error in createObservations call:", err.message);
     process.exit(1);
@@ -209,7 +209,7 @@ async function main() {
   const createEncounters = require("./createEncounters");
   try {
     const encountersResult = await createEncounters({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    // console.log("CreateEncounters result:", encountersResult);
+    console.log("CreateEncounters result:", encountersResult);
   } catch (err) {
     console.error("Error in createEncounters call:", err.message);
     process.exit(1);
@@ -219,7 +219,7 @@ async function main() {
   const createConditions = require("./createConditions");
   try {
     const conditionsResult = await createConditions({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    // console.log("CreateConditions result:", conditionsResult);
+    console.log("CreateConditions result:", conditionsResult);
   } catch (err) {
     console.error("Error in createConditions call:", err.message);
     process.exit(1);
@@ -229,7 +229,7 @@ async function main() {
   const createMedications = require("./createMedications");
   try {
     const medicationsResult = await createMedications({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    // console.log("CreateMedications result:", medicationsResult);
+    console.log("CreateMedications result:", medicationsResult);
   }
   catch (err) {
     console.error("Error in createMedications call:", err.message);
@@ -240,7 +240,7 @@ async function main() {
   const createDocumentReference = require("./createdocumentreferenes");
   try {
     const documentReferenceResult = await createDocumentReference({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    // console.log("CreateDocumentReference result:", documentReferenceResult);
+    console.log("CreateDocumentReference result:", documentReferenceResult);
   }
   catch (err) {
     console.error("Error in createDocumentReference call:", err.message);
@@ -251,7 +251,7 @@ async function main() {
   const createCarePlans = require("./createCareplans");
   try {
     const carePlansResult = await createCarePlans({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    // console.log("CreateCarePlans result:", carePlansResult);
+    console.log("CreateCarePlans result:", carePlansResult);
   }
   catch (err) {
     console.error("Error in createCarePlans call:", err.message);
@@ -262,7 +262,7 @@ async function main() {
   const createAllergyIntolerances = require("./createAllergyIntollerances");
   try {
     const allergyIntolerancesResult = await createAllergyIntolerances({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    // console.log("CreateAllergyIntolerances result:", allergyIntolerancesResult);
+    console.log("CreateAllergyIntolerances result:", allergyIntolerancesResult);
   }
   catch (err) {
     console.error("Error in createAllergyIntolerances call:", err.message);
@@ -357,7 +357,9 @@ async function main() {
     cognitoCode: oauthResults.cognitoCode,
     cognitoState: oauthResults.cognitoState
   });
-
+  console.log("Samsung jwt : ", tokenManager.token);
+  console.log("PROA Client FHIR Patient ID:", proaClientFhirPatientId);
+  console.log("PROA Client FHIR Person ID:", proaClientFhirPersonId);
 }
 
 main().catch((err) => {

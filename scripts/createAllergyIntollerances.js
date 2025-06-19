@@ -230,7 +230,7 @@ async function createAllergyIntolerances({
     },
     {
       resourceType: "AllergyIntolerance",
-      id: `{${randomUserData.allergyIntolerance3}}`,
+      id: `${randomUserData.allergyIntolerance3}`,
       meta: {
         source: "proa-samsung-demo",
         security: [
@@ -348,7 +348,7 @@ async function createAllergyIntolerances({
     },
     {
       resourceType: "AllergyIntolerance",
-      id: `{${randomUserData.allergyIntolerance4}}`,
+      id: `${randomUserData.allergyIntolerance4}`,
       meta: {
         source: "proa-samsung-demo",
         security: [
@@ -530,7 +530,7 @@ async function createAllergyIntolerances({
     },
     {
       resourceType: "AllergyIntolerance",
-      id: `{${randomUserData.allergyIntolerance5}}`,
+      id: `${randomUserData.allergyIntolerance5}`,
       meta: {
         source: "proa-samsung-demo",
         security: [
@@ -698,7 +698,7 @@ async function createAllergyIntolerances({
     },
     {
       resourceType: "AllergyIntolerance",
-      id: `{${randomUserData.allergyIntolerance6}}`,
+      id: `${randomUserData.allergyIntolerance6}`,
       meta: {
         source: "proa-samsung-demo",
         security: [
@@ -1062,7 +1062,7 @@ async function createAllergyIntolerances({
     },
     {
       resourceType: "AllergyIntolerance",
-      id: `{${randomUserData.allergyIntolerance7}}`,
+      id: `${randomUserData.allergyIntolerance7}`,
       meta: {
         source: "proa-samsung-demo",
         security: [
@@ -1256,7 +1256,7 @@ async function createAllergyIntolerances({
     },
     {
       resourceType: "AllergyIntolerance",
-      id: `{${randomUserData.allergyIntolerance8}}`,
+      id: `${randomUserData.allergyIntolerance8}`,
       meta: {
         source: "proa-samsung-demo",
         security: [

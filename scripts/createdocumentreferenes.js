@@ -423,7 +423,7 @@ async function createDocumentReferences({ env, proaAccessToken, randomUserData, 
     },
     {
         "resourceType": "DocumentReference",
-        "id": `{${randomUserData.documentRefenceID5}}`,
+        "id": `${randomUserData.documentRefenceID5}`,
         "meta": {
             "lastUpdated": `${new Date().toISOString()}`,
             "source": "https://www.icanbwell.com/test-ai-generated-content",

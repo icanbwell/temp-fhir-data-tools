@@ -4,9 +4,14 @@
 
 const axios = require('axios');
 
-async function createProaProcedures({ env, proaAccessToken, randomUserData, PROAclientFhirPatientId }) {
+async function createProaProcedures({ env, proaAccessToken, randomUserData, proaClientFhirPatientId }) {
+
+  console.log(`NJ-DEBUG: We are getting the proa patient in procedure as as ${proaClientFhirPatientId}`)
   if (!proaAccessToken) {
     throw new Error('PROA access token not available.');
+  }
+  if(!proaClientFhirPatientId) {
+    throw new Error('PROA client FHIR Patient ID not available.');
   }
 
   const proceduresData = [
@@ -64,7 +69,7 @@ async function createProaProcedures({ env, proaAccessToken, randomUserData, PROA
             }
         ],
         "subject": {
-            "reference": `Patient/${PROAclientFhirPatientId}`,
+            "reference": `Patient/${proaClientFhirPatientId}`,
             "display": `${randomUserData.random_FN} ${randomUserData.random_LN}`
         },
         "performedPeriod": {
@@ -190,7 +195,7 @@ async function createProaProcedures({ env, proaAccessToken, randomUserData, PROA
             "text": "Retinal Laser Surgery"
         },
         "subject": {
-            "reference": `Patient/${PROAclientFhirPatientId}`,
+            "reference": `Patient/${proaClientFhirPatientId}`,
             "display": `${randomUserData.random_FN} ${randomUserData.random_LN}`
         }, 
         "performedPeriod": {
@@ -352,7 +357,7 @@ async function createProaProcedures({ env, proaAccessToken, randomUserData, PROA
             "text": "Appendectomy"
         },
         "subject": {
-            "reference": `Patient/${PROAclientFhirPatientId}`,
+            "reference": `Patient/${proaClientFhirPatientId}`,
             "display": `${randomUserData.random_FN} ${randomUserData.random_LN}`
         },
         "performedPeriod": {
@@ -492,7 +497,7 @@ async function createProaProcedures({ env, proaAccessToken, randomUserData, PROA
             }
         ],
         "subject": {
-            "reference": `Patient/${PROAclientFhirPatientId}`,
+            "reference": `Patient/${proaClientFhirPatientId}`,
             "display": `${randomUserData.random_FN} ${randomUserData.random_LN}`
         },
         "performedDateTime": "2020-01-20T00:00:00.000Z",

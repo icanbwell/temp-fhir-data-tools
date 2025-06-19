@@ -13,7 +13,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     const immunizationData = [
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID1}`,
+        "id": `${randomUserData.immunization1}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -90,7 +90,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID2}`,
+        "id": `${randomUserData.immunization2}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -167,7 +167,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID3}`,
+        "id": `${randomUserData.immunization3}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -234,7 +234,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID4}`,
+        "id": `${randomUserData.immunization4}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -406,7 +406,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID5}`,
+        "id": `${randomUserData.immunization5}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -578,7 +578,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID6}`,
+        "id": `${randomUserData.immunization6}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -654,7 +654,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID7}`,
+        "id": `${randomUserData.immunization7}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -730,7 +730,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID8}`,
+        "id": `${randomUserData.immunization8}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -806,7 +806,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID9}`,
+        "id": `${randomUserData.immunization9}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -868,7 +868,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID10}`,
+        "id": `${randomUserData.immunization10}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -927,7 +927,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID11}`,
+        "id": `${randomUserData.immunization11}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -986,7 +986,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID12}`,
+        "id": `${randomUserData.immunization12}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -1045,7 +1045,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID13}`,
+        "id": `${randomUserData.immunization13}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -1108,7 +1108,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID14}`,
+        "id": `${randomUserData.immunization14}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -1167,7 +1167,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID15}`,
+        "id": `${randomUserData.immunization15}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -1226,7 +1226,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID16}`,
+        "id": `${randomUserData.immunization16}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
@@ -1285,7 +1285,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
     },
     {
         "resourceType": "Immunization",
-        "id": `${randomUserData.immunizationUUID17}`,
+        "id": `${randomUserData.immunization17}`,
         "meta": {
             "source": "https://www.icanbwell.com",
             "security": [
