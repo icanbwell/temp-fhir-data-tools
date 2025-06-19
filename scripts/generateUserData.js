@@ -270,6 +270,7 @@ async function main() {
   }
 
   // Create Cognito user if userPoolId is provided
+  let cognitoResult = null;
   if (vars.userPoolId) {
     const createCognitoUser = require("./createCognitoUser");
     try {
@@ -278,7 +279,7 @@ async function main() {
       console.log(`- proaClientFhirPatientId: ${proaClientFhirPatientId}`);
       console.log(`- proaClientFhirPersonId: ${proaClientFhirPersonId}`);
       
-      const cognitoResult = await createCognitoUser({
+      cognitoResult = await createCognitoUser({
         userPoolId: vars.userPoolId,
         awsRegion: vars.awsRegion,
         randomUserData,
@@ -296,11 +297,66 @@ async function main() {
       console.log(`- custom:clientFhirPersonId: ${proaClientFhirPersonId}`);
     } catch (err) {
       console.error("Error creating Cognito user:", err.message);
-      // Don't exit on Cognito user creation failure - it's an optional step
+      process.exit(1);
     }
   } else {
     console.log("Skipping Cognito user creation - userPoolId not provided in input");
   }
+
+  // Get OAuth URL and then extract code and state from the redirect
+  const getOauthUrl = require("./getOauthUrl");
+  const getOauthCode = require("./getOauthCode");
+  
+  let oauthResults = {
+    redirectUrl: null,
+    cognitoCode: null,
+    cognitoState: null
+  };
+
+  try {
+    console.log("Fetching OAuth URL...");
+    const redirectUrl = await getOauthUrl({ 
+      env, 
+      accessToken: tokenManager.accessToken,
+      connectionId: `bwell_proa_${env}_2`
+    });
+    
+    if (redirectUrl) {
+      console.log("OAuth Redirect URL:", redirectUrl);
+      oauthResults.redirectUrl = redirectUrl;
+      
+      // Now use the URL to get the OAuth code and state
+      try {
+        console.log("Fetching OAuth code and state...");
+        const { cognitoCode, cognitoState } = await getOauthCode({ 
+          env,
+          redirectUrl 
+        });
+        
+        if (cognitoCode && cognitoState) {
+          console.log("Successfully extracted OAuth code and state");
+          oauthResults.cognitoCode = cognitoCode;
+          oauthResults.cognitoState = cognitoState;
+        } else {
+          console.log("Failed to extract OAuth code and state from response");
+        }
+      } catch (codeErr) {
+        console.error("Error fetching OAuth code and state:", codeErr.message);
+      }
+    } else {
+      console.log("Failed to retrieve OAuth URL");
+    }
+  } catch (err) {
+    console.error("Error fetching OAuth URL:", err.message);
+    // Don't exit process to allow script to complete even if OAuth URL fetch fails
+  }
+  
+  // Output the full OAuth results
+  console.log("OAuth Flow Results:", {
+    redirectUrl: oauthResults.redirectUrl,
+    cognitoCode: oauthResults.cognitoCode,
+    cognitoState: oauthResults.cognitoState
+  });
 
 }
 
