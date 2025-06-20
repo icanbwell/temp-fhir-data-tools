@@ -1,0 +1,1 @@
+module.exports = `mutation updateUserProfile($input: FHIRPersonInput!) {\n  updateUserProfile(input: $input) {\n    id\n    name {\n      given\n      family\n    }\n    birthDate\n    address {\n      line\n      city\n      state\n      postalCode\n      use\n    }\n    telecom {\n      system\n      use\n      value\n    }\n    gender\n  }\n}`;
