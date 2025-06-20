@@ -1359,7 +1359,7 @@ async function createProaImmunization({ env, proaAccessToken, randomUserData, pr
         const response = await axios(config);
         return response.data;
     } catch (error) {
-        console.error('Error creating PROA immunization records:', error);
+        console.error('Error creating PROA Immunization Records:', error);
         throw error;
     }
 }

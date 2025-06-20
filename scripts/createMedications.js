@@ -2351,7 +2351,7 @@ async function createMedications({
   const config = {
     method: "post",
     maxBodyLength: Infinity,
-    url: `https://fhir-proa.${env}.icanbwell.com/4_0_0/Immunization/$merge`,
+    url: `https://fhir-proa.${env}.icanbwell.com/4_0_0/MedicationRequest/$merge`,
     headers: {
       "Content-Type": "application/fhir+json",
       Authorization: `Bearer ${proaAccessToken}`,
@@ -2363,7 +2363,7 @@ async function createMedications({
     const response = await axios(config);
     return response.data;
   } catch (error) {
-    console.error("Error creating PROA immunization records:", error);
+    console.error("Error creating PROA MedicationRequest records:", error);
     throw error;
   }
 }

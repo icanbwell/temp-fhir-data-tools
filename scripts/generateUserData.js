@@ -44,7 +44,7 @@ async function main() {
   const tokenManager = new Token();
   try {
     const response = await axios.get(createJwtUrl); // Use GET instead of POST
-    console.log(`NJ-DATA: Response from create_test_samsung_jwt:`, response.data);
+    console.log(`Response from create_test_samsung_jwt:`, response.data);
 
     // Call the GraphQL endpoint with the JWT and clientKey
     try {
@@ -151,9 +151,9 @@ async function main() {
     process.exit(1);
   }
 
-  console.log("NJ-DATA: proaClientFhirPatientId:", proaClientFhirPatientId);
-  console.log("NJ-DATA: proaPatientFhirSourceUrl:", proaPatientFhirSourceUrl);
-  console.log("NJ-DATA: proaClientFhirPersonId:", proaClientFhirPersonId);
+  console.log("proaClientFhirPatientId:", proaClientFhirPatientId);
+  console.log("proaPatientFhirSourceUrl:", proaPatientFhirSourceUrl);
+  console.log("proaClientFhirPersonId:", proaClientFhirPersonId);
 
   // Call createProaOrganizations
   const createProaOrganizations = require("./createProaOrganizations");
@@ -179,7 +179,7 @@ async function main() {
   const createProaProcedures = require("./createProaProcedures");
   try {
     const proaProceduresResult = await createProaProcedures({ env, proaAccessToken, randomUserData, proaClientFhirPatientId });
-    // console.log("CreateProaProcedures result:", proaProceduresResult);
+    console.log("CreateProaProcedures result:", proaProceduresResult);
   } catch (err) {
     console.error("Error in createProaProcedures call:", err.message);
     process.exit(1);

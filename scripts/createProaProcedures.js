@@ -6,7 +6,6 @@ const axios = require('axios');
 
 async function createProaProcedures({ env, proaAccessToken, randomUserData, proaClientFhirPatientId }) {
 
-  console.log(`NJ-DEBUG: We are getting the proa patient in procedure as as ${proaClientFhirPatientId}`)
   if (!proaAccessToken) {
     throw new Error('PROA access token not available.');
   }
@@ -569,7 +568,7 @@ async function createProaProcedures({ env, proaAccessToken, randomUserData, proa
     const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `https://fhir-proa.${env}.icanbwell.com/4_0_0/Patient/$merge`,
+        url: `https://fhir-proa.${env}.icanbwell.com/4_0_0/Procedure/$merge`,
         headers: {
         'Content-Type': 'application/fhir+json',
         'Authorization': `Bearer ${proaAccessToken}`
@@ -579,10 +578,10 @@ async function createProaProcedures({ env, proaAccessToken, randomUserData, proa
     
     try {
         const response = await axios(config);
-        console.log("CreateProaProcedures result:", response.data);
+        console.log("Create Proa Procedures response status:", response.data);
         return response.data;
     } catch (error) {
-        console.error("Error in createProaProcedures call:", error);
+        console.error("Error creating Proa Procedures:", error.message);
         throw error;
     }
 }

@@ -1,6 +1,3 @@
-// scripts/createCognitoUser.js
-// Script to create a user in AWS Cognito using the generated user data
-
 const AWS = require('aws-sdk');
 
 /**
@@ -32,7 +29,7 @@ async function createCognitoUser({ userPoolId, awsRegion, randomUserData, proaCl
     throw new Error('proaClientFhirPersonId is required');
   }
 
-  // Configure AWS SDK with the provided region
+  // Configure AWS SDK with the specified region
   AWS.config.update({ region: awsRegion });
   
   try {

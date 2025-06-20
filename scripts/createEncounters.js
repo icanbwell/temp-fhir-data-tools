@@ -1391,7 +1391,7 @@ async function createEncounters({ env, proaAccessToken, randomUserData, proaClie
     const config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: `https://fhir-proa.${env}.icanbwell.com/4_0_0/Immunization/$merge`,
+            url: `https://fhir-proa.${env}.icanbwell.com/4_0_0/Encounter/$merge`,
             headers: {
                 'Content-Type': 'application/fhir+json',
                 'Authorization': `Bearer ${proaAccessToken}`
@@ -1403,7 +1403,7 @@ async function createEncounters({ env, proaAccessToken, randomUserData, proaClie
             const response = await axios(config);
             return response.data;
         } catch (error) {
-            console.error('Error creating PROA immunization records:', error);
+            console.error('Error creating PROA Encounter Records:', error);
             throw error;
         }
    }
