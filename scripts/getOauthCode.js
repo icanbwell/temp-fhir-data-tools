@@ -25,7 +25,6 @@ async function getOauthCode({ env, redirectUrl }) {
       maxBodyLength: Infinity,
       url: redirectUrl,
       headers: {
-        'Cookie': 'XSRF-TOKEN=b7271a4d-e448-404d-9768-9c6b23830951; csrf-state=""; csrf-state-legacy=""'
       }
     });
 
