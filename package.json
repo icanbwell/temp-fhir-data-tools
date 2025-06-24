@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "@ahryman40k/ts-fhir-types": "^4.0.39",
-    "@faker-js/faker": "^9.8.0"
+    "@faker-js/faker": "^9.8.0",
+    "axios": "^1.10.0"
   }
 }
