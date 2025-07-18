@@ -53,15 +53,16 @@ async function checkResourceExists(resourceType, resourceId) {
             )
         )) ||
       (data.resourceType === "Encounter" &&
-        (data.status === "CANCELLED" ||
-          (Array.isArray(data.type) &&
-            data.type.some(
-              (t) =>
-                Array.isArray(t.coding) &&
-                t.coding.some(
-                  (c) => c.code === "unknown" || c.display === "Unknown"
-                )
-            ))))
+        (data.status.toLowerCase() === "cancelled" ||
+          data.status.toLowerCase() === "unknown")) ||
+      (Array.isArray(data.type) &&
+        data.type.some(
+          (t) =>
+            Array.isArray(t.coding) &&
+            t.coding.some(
+              (c) => c.code === "unknown" || c.display === "Unknown"
+            )
+        ))
     ) {
       return false;
     }

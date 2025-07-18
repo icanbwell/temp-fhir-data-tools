@@ -1,7 +1,4 @@
 const { faker } = require("@faker-js/faker");
-const { createCodeableConcept } = require("./../fhir/codeableConcept.js");
-const { createCoding } = require("./../fhir/coding.js");
-const { text } = require("stream/consumers");
 
 const encounterPriorities = ["Urgent", "Routine"];
 
@@ -41,12 +38,32 @@ const createIdentifier = () => ({
   value: faker.string.alphanumeric({ length: 10 }),
 });
 
+const participantTypes = ["HCP", "Patient", "Family", "Caregiver"];
+const participantIds = [
+  "Practitioner/7dff22e9-5063-43f1-86f2-50fde98a7dd7",
+  "Practitioner/45b0c0ea-bad0-4e69-bd9a-89410ec47387",
+];
 const createParticipant = () => ({
   individual: {
     id: faker.string.uuid(),
-    identifier: createIdentifier(),
+    identifier: {
+      id: faker.string.uuid(),
+      system: "https://www.icanbwell.com/sourceId",
+      value: faker.helpers.arrayElement(participantIds),
+    },
   },
-  type: [createCodeableConcept()],
+  type: [
+    {
+      coding: [
+        {
+          system: "http://terminology.hl7.org/CodeSystem/participant-type",
+          code: faker.helpers.arrayElement(participantTypes),
+          display: faker.helpers.arrayElement(participantTypes),
+        },
+      ],
+      text: faker.helpers.arrayElement(participantTypes),
+    },
+  ],
 });
 
 const locationIds = [
@@ -61,7 +78,13 @@ const createLocation = () => ({
   },
   status: faker.helpers.arrayElement(["planned", "active", "completed", null]),
   physicalType: {
-    coding: [createCoding()],
+    coding: [
+      {
+        system: "http://terminology.hl7.org/CodeSystem/location-physical-type",
+        code: "building",
+        display: "Building",
+      },
+    ],
     text: "Building",
   },
   period: createPeriod(),

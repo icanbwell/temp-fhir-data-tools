@@ -105,7 +105,7 @@ async function makeEncounterResolvable(resource) {
                 updatedEntry.context.reference = `Encounter/${uuidIdentifier}`;
 
                 if (updatedEntry.subject) {
-                  const subjectUuid = updatedDispense.subject.extension?.find(
+                  const subjectUuid = updatedEntry.subject.extension?.find(
                     (ext) => ext.url === "https://www.icanbwell.com/uuid"
                   )?.valueString;
 
